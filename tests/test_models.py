@@ -2,19 +2,17 @@ from __future__ import annotations
 
 from decimal import Decimal
 
-from modulo1.crud import (
-    add_order_item,
-    create_order,
-    create_user,
-    delete_order,
-    delete_user,
-    get_order,
-    get_user,
-    list_orders,
-    list_users,
-    update_order,
-    update_user,
-)
+from modulo1.crud import add_order_item
+from modulo1.crud import create_order
+from modulo1.crud import create_user
+from modulo1.crud import delete_order
+from modulo1.crud import delete_user
+from modulo1.crud import get_order
+from modulo1.crud import get_user
+from modulo1.crud import list_orders
+from modulo1.crud import list_users
+from modulo1.crud import update_order
+from modulo1.crud import update_user
 
 
 def test_user_crud(session):

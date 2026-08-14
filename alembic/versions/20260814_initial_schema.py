@@ -1,7 +1,7 @@
 """initial schema
 
 Revision ID: 20260814_initial_schema
-Revises: 
+Revises:
 Create Date: 2026-08-14 00:00:00.000000
 """
 
@@ -40,8 +40,18 @@ def upgrade() -> None:
         "orders",
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("user_id", sa.Integer(), nullable=False),
-        sa.Column("status", sa.String(length=50), nullable=False, server_default="pending"),
-        sa.Column("total_amount", sa.Numeric(precision=10, scale=2), nullable=False, server_default="0.00"),
+        sa.Column(
+            "status",
+            sa.String(length=50),
+            nullable=False,
+            server_default="pending",
+        ),
+        sa.Column(
+            "total_amount",
+            sa.Numeric(precision=10, scale=2),
+            nullable=False,
+            server_default="0.00",
+        ),
         sa.Column(
             "created_at",
             sa.DateTime(timezone=True),
@@ -65,7 +75,12 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index(op.f("ix_order_items_id"), "order_items", ["id"], unique=False)
-    op.create_index(op.f("ix_order_items_order_id"), "order_items", ["order_id"], unique=False)
+    op.create_index(
+        op.f("ix_order_items_order_id"),
+        "order_items",
+        ["order_id"],
+        unique=False,
+    )
 
 
 def downgrade() -> None:

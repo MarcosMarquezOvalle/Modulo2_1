@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from typing import Iterable
 
+from models import Order
+from models import OrderItem
+from models import User
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-
-from models import Order, OrderItem, User
 
 
 def _refresh_and_return(session: Session, model):
@@ -73,7 +73,10 @@ def list_orders(session: Session, user_id: int | None = None) -> list[Order]:
 
 
 def _recalculate_order_total(order: Order) -> None:
-    total = sum((item.quantity * item.unit_price for item in order.items), Decimal("0.00"))
+    total = sum(
+        (item.quantity * item.unit_price for item in order.items),
+        Decimal("0.00"),
+    )
     order.total_amount = total
 
 

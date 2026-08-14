@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from logging.config import fileConfig
 
-from alembic import context
-from sqlalchemy import engine_from_config, pool
-
 from modulo1.database import Base
-from modulo1.models import Order, OrderItem, User
+from sqlalchemy import engine_from_config
+from sqlalchemy import pool
+
+from alembic import context
 
 config = context.config
 
